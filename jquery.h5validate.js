@@ -112,7 +112,9 @@
 						if ($element.attr('title')) {
 							$errorID.text($element.attr('title'));
 						}
-						$errorID.show();
+						// errorID.show() is being replaced with add/removeClass to allow the use of inline-block
+						$errorID.addClass('inline-block');
+						$errorID.removeClass('hidden');
 					}
 					$element.data('valid', false);
 					options.settings.invalidCallback.call(options.element, options.validity);
@@ -126,7 +128,9 @@
 
 					$element.addClass(options.validClass).removeClass(options.errorClass);
 					if ($errorID.length) {
-						$errorID.hide();
+						// errorID.hide() is being replaced with add/removeClass to allow the use of inline-block
+						$errorID.addClass('hidden');
+            $errorID.removeClass('inline-block');
 					}
 					$element.data('valid', true);
 					options.settings.validCallback.call(options.element, options.validity);
